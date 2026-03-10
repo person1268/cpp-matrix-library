@@ -79,6 +79,12 @@ Run:
 
 ---
 
+## Example Output
+
+![Program Output](screenshot.png)
+
+---
+
 ## Future Improvements
 
 Potential extensions to this project:
