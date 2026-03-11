@@ -2,102 +2,35 @@
 
 A simple object-oriented matrix library written in C++ that demonstrates core data structures and object-oriented programming concepts.
 
-This project was developed as part of coursework in computer science and showcases the implementation of a custom `Matrix` class with several mathematical operations.
-
----
+This project was developed as part of coursework in computer science and showcases the implementation of a custom `Matrix` class for working with integer matrices.
 
 ## Features
 
-* Dynamic 2-D matrix creation
-* Matrix addition and subtraction
-* Matrix multiplication
-* Matrix minimum and maximum value detection
-* Input and output functions for matrices
-* Separation of interface and implementation using header and source files
-
----
+- Dynamic 2-D matrix creation
+- Set all elements to one value
+- Fill matrix with random values
+- Sort each row of the matrix
+- Rotate the matrix 90 degrees clockwise
+- Find whether a value exists in the matrix
+- Compute row sums and row averages
+- Find the minimum and maximum matrix values
+- Print the full matrix, a single row, or a single column
 
 ## Concepts Demonstrated
 
-This project demonstrates several fundamental C++ concepts:
-
-* Object-oriented design
-* Class implementation with encapsulation
-* Header/source file separation
-* Dynamic memory usage
-* Algorithm implementation for matrix operations
-
----
+- Object-oriented design
+- Class implementation with encapsulation
+- Header/source file separation
+- Dynamic memory management
+- Basic matrix-processing algorithms
 
 ## Project Structure
 
-```
+```text
 cpp-matrix-library
 │
-├── main.cpp       # Program entry point
+├── main.cpp
 ├── main.h
-├── matrix.cpp     # Matrix class implementation
-├── matrix.h       # Matrix class definition
+├── matrix.cpp
+├── matrix.h
 └── README.md
-```
-
----
-
-## Example
-
-Example matrix multiplication:
-
-```
-Matrix A (2x2)
-1 2
-3 4
-
-Matrix B (2x2)
-5 6
-7 8
-
-Result (A * B)
-19 22
-43 50
-```
-
----
-
-## How to Compile
-
-Compile using g++:
-
-```
-g++ main.cpp matrix.cpp -o matrix_program
-```
-
-Run:
-
-```
-./matrix_program
-```
-
----
-
-## Example Output
-
-![Program Output](screenshot.png)
-
----
-
-## Future Improvements
-
-Potential extensions to this project:
-
-* operator overloading (`+`, `*`)
-* matrix transpose function
-* determinant calculation
-* unit tests
-* template support for different numeric types
-
----
-
-## Author
-
-John Pleasant
-Computer Science Student
