@@ -84,7 +84,7 @@ int main() {
      cout << endl;
 
      /*This will succeed and set element 100*/
-     cout << "attempting to set element 100 at [3][3]" << endl;
+     cout << "attempting to set element 100 at [2][2]" << endl;
      if (mymatrix.setElement(100, 2, 2))
      {
         mymatrix.printMatrix();
