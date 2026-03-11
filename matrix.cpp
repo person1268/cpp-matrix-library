@@ -59,20 +59,18 @@ Matrix::Matrix(int rowSize, int colSize)
     this->sorted = false;
 }
 
-Matrix::~Matrix()
-{
-/* **********************************
- * This is the destructor for Matrix 
- * objects
- *
- * @param na : none
- * @return (int) : na
- * @exception na : na
- * @note na
- * **********************************/
-    for (int i = 0; i < rowLength; i++)
-    {
-        delete matrix[i];
+Matrix::~Matrix() {
+    /* **********************************
+     * This is the destructor for Matrix
+     * objects
+     *
+     * @param na : none
+     * @return (int) : na
+     * @exception na : na
+     * @note na
+     * **********************************/
+    for (int i = 0; i < rowLength; i++) {
+        delete[] matrix[i];
     }
     delete[] matrix;
 }
@@ -100,22 +98,22 @@ int Matrix::rowSum(int rowNumber)
     return total;
 }
 
-double Matrix::rowAverage(int rowNumber)
-{
-/* **********************************
- * This function returns the average
- * of the indexes at rowNumber
- *
- * @param na : int rowNumber
- * @return (int) : int average
- * @exception na : na
- * @note na
- * **********************************/
+double Matrix::rowAverage(int rowNumber) {
+    /* **********************************
+     * This function returns the average
+     * of the indexes at rowNumber
+     *
+     * @param na : int rowNumber
+     * @return (double) : double average
+     * @exception na : na
+     * @note na
+     * **********************************/
     double average = 0;
-    if (rowNumber >= 0 && rowNumber < rowLength)
-    {
-        average = static_cast<double>(rowSum(rowNumber)) / (rowLength - 1);
+
+    if (rowNumber >= 0 && rowNumber < rowLength && colLength > 0) {
+        average = static_cast<double>(rowSum(rowNumber)) / colLength;
     }
+
     return average;
 }
 
@@ -171,53 +169,25 @@ int Matrix::max()
     return maximum;
 }
 
-bool Matrix::findValue(int value)
-{
-/* **********************************
- * This function returns the value
- * being searched for in the matrix
- *
- * @param na : na
- * @return (int) : int 
- * @exception na : na
- * @note na
- * **********************************/
-    bool found = false;
-    if (sorted)
-    {
-        int i = 0;
-        int j = colLength - 1; //Starting from top-right corner
-        while (i < rowLength && j >= 0)
-        {
-            if (matrix[i][j] == value)
-            {
-                found = true;
-            }
-            else if (matrix[i][j] > value)
-            {
-                j--; // Move left
-            }
-            else
-            {
-                i++; // Move down
-            }
-        }
-    }
-    else
-    {
-        for (int i = 0; i < rowLength; i++)
-        {
-            for (int j = 0; j < colLength; j++)
-            {
-                if (matrix[i][j] == value)
-                {
-                    found = true;
-                }
+bool Matrix::findValue(int value) {
+    /* **********************************
+     * This function returns true if the
+     * value is found in the matrix
+     *
+     * @param na : int value
+     * @return (bool) : bool found
+     * @exception na : na
+     * @note na
+     * **********************************/
+    for (int i = 0; i < rowLength; i++) {
+        for (int j = 0; j < colLength; j++) {
+            if (matrix[i][j] == value) {
+                return true;
             }
         }
     }
 
-    return found;
+    return false;
 }
 
 void Matrix::setRandom(int low, int high)
@@ -256,47 +226,39 @@ void Matrix::sortMatrix()
     sorted = true;
 }
 
-void Matrix::rotateMatrix()
-{
-/* **********************************
- * This function rotates the matrix
- * by 90 degrees
- *
- * @param na : na
- * @return (int) : int 
- * @exception na : na
- * @note na
- * **********************************/
+void Matrix::rotateMatrix() {
+    /* **********************************
+     * This function rotates the matrix
+     * by 90 degrees clockwise
+     *
+     * @param na : na
+     * @return (int) : int
+     * @exception na : na
+     * @note na
+     * **********************************/
     int **newmatrix = new int*[colLength];
-    int temp;
-    for (int i = 0; i < colLength; i++)
-    {
+
+    for (int i = 0; i < colLength; i++) {
         newmatrix[i] = new int[rowLength];
     }
 
-    for (int i = 0; i  < rowLength; i++)
-    {
-        for (int j = 0; j < colLength; j++)
-        {
-            newmatrix[j][i] = matrix[i][j];
+    for (int i = 0; i < rowLength; i++) {
+        for (int j = 0; j < colLength; j++) {
+            newmatrix[j][rowLength - 1 - i] = matrix[i][j];
         }
     }
 
-    for (int i = 0; i < colLength; i++)
-    {
-        swap(newmatrix[i][0], newmatrix[i][2]); // Swap column values
-    }
-
-    for (int i = 0; i < rowLength; i++)
-    {
-        delete matrix[i];
+    for (int i = 0; i < rowLength; i++) {
+        delete[] matrix[i];
     }
     delete[] matrix;
 
     matrix = newmatrix;
-    temp = rowLength;
+
+    int temp = rowLength;
     rowLength = colLength;
     colLength = temp;
+
     sorted = false;
 }
 
